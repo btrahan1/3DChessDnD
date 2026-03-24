@@ -1,0 +1,197 @@
+{
+"Name": "Radiant_Healer_Bishop",
+"Type": "Procedural",
+"Parts": [
+{
+"Id": "base_pedestal",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0, 0.05, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.8, 0.1, 0.8],
+"ColorHex": "#333333",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "base_marble",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0, 0.12, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.7, 0.05, 0.7],
+"ColorHex": "#FFFFFF",
+"Material": "Glass",
+"Operation": "Union"
+},
+{
+"Id": "robes_lower",
+"ParentId": null,
+"Shape": "Cone",
+"Position": [0, 0.6, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.4, 1.2, 0.4],
+"ColorHex": "#F5F5DC",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "stole_left",
+"ParentId": null,
+"Shape": "Box",
+"Position": [0.12, 0.8, 0.18],
+"Rotation": [5, 0, 0],
+"Scale": [0.08, 0.9, 0.02],
+"ColorHex": "#FFD700",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "stole_right",
+"ParentId": null,
+"Shape": "Box",
+"Position": [-0.12, 0.8, 0.18],
+"Rotation": [5, 0, 0],
+"Scale": [0.08, 0.9, 0.02],
+"ColorHex": "#FFD700",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "torso",
+"ParentId": null,
+"Shape": "Capsule",
+"Position": [0, 1.15, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.25, 0.4, 0.2],
+"ColorHex": "#F5F5DC",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "head",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [0, 1.45, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.15, 0.16, 0.15],
+"ColorHex": "#FFDBAC",
+"Material": "Plastic",
+"Operation": "Union"
+},
+{
+"Id": "miter_base",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0, 1.55, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.18, 0.1, 0.18],
+"ColorHex": "#FFFFFF",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "miter_top",
+"ParentId": null,
+"Shape": "Cone",
+"Position": [0, 1.75, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.18, 0.4, 0.1],
+"ColorHex": "#FFFFFF",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "miter_accent",
+"ParentId": null,
+"Shape": "Box",
+"Position": [0, 1.75, 0.05],
+"Rotation": [0, 0, 0],
+"Scale": [0.02, 0.4, 0.01],
+"ColorHex": "#FFD700",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "staff_shaft",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0.35, 0.8, 0.1],
+"Rotation": [0, 0, 5],
+"Scale": [0.03, 1.6, 0.03],
+"ColorHex": "#FFD700",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "staff_head",
+"ParentId": null,
+"Shape": "Torus",
+"Position": [0.42, 1.65, 0.1],
+"Rotation": [0, 90, 0],
+"Scale": [0.15, 0.15, 0.03],
+"ColorHex": "#FFD700",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "healing_gem",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [0.42, 1.65, 0.1],
+"Rotation": [0, 0, 0],
+"Scale": [0.08, 0.08, 0.08],
+"ColorHex": "#00FF7F",
+"Material": "Glow",
+"Operation": "Union"
+},
+{
+"Id": "aura_ring",
+"ParentId": null,
+"Shape": "Torus",
+"Position": [0, 0.2, 0],
+"Rotation": [90, 0, 0],
+"Scale": [0.5, 0.5, 0.01],
+"ColorHex": "#00FF7F",
+"Material": "Glow",
+"Operation": "Union"
+}
+],
+"Timeline": [
+{
+"Time": 0.0,
+"Action": "Scale",
+"TargetId": "healing_gem",
+"Value": [0.08, 0.08, 0.08],
+"Duration": 0.0
+},
+{
+"Time": 1.0,
+"Action": "Scale",
+"TargetId": "healing_gem",
+"Value": [0.12, 0.12, 0.12],
+"Duration": 1.0
+},
+{
+"Time": 2.0,
+"Action": "Scale",
+"TargetId": "healing_gem",
+"Value": [0.08, 0.08, 0.08],
+"Duration": 1.0
+},
+{
+"Time": 0.0,
+"Action": "Rotate",
+"TargetId": "aura_ring",
+"Value": [90, 0, 0],
+"Duration": 0.0
+},
+{
+"Time": 4.0,
+"Action": "Rotate",
+"TargetId": "aura_ring",
+"Value": [90, 360, 0],
+"Duration": 4.0
+}
+]
+}

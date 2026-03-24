@@ -1,0 +1,171 @@
+{
+"Name": "Radiant_Peasant_Pawn",
+"Type": "Procedural",
+"Parts": [
+{
+"Id": "base_pedestal",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0, 0.05, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.65, 0.1, 0.65],
+"ColorHex": "#333333",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "base_stone",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0, 0.12, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.55, 0.05, 0.55],
+"ColorHex": "#708090",
+"Material": "Plastic",
+"Operation": "Union"
+},
+{
+"Id": "tunic_lower",
+"ParentId": null,
+"Shape": "Cone",
+"Position": [0, 0.45, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.35, 0.7, 0.35],
+"ColorHex": "#8B4513",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "tunic_upper",
+"ParentId": null,
+"Shape": "Box",
+"Position": [0, 0.75, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.3, 0.35, 0.2],
+"ColorHex": "#A0522D",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "head",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [0, 1.0, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.15, 0.16, 0.15],
+"ColorHex": "#FFDBAC",
+"Material": "Plastic",
+"Operation": "Union"
+},
+{
+"Id": "cowl_hood",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [0, 1.05, -0.02],
+"Rotation": [10, 0, 0],
+"Scale": [0.18, 0.18, 0.18],
+"ColorHex": "#556B2F",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "spear_shaft",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0.25, 0.6, 0.1],
+"Rotation": [0, 0, 5],
+"Scale": [0.03, 1.2, 0.03],
+"ColorHex": "#5D4037",
+"Material": "Rubber",
+"Operation": "Union"
+},
+{
+"Id": "spear_tip",
+"ParentId": null,
+"Shape": "Cone",
+"Position": [0.3, 1.25, 0.1],
+"Rotation": [0, 0, 5],
+"Scale": [0.06, 0.15, 0.06],
+"ColorHex": "#C0C0C0",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "buckler_main",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [-0.2, 0.75, 0.15],
+"Rotation": [90, 0, 20],
+"Scale": [0.25, 0.03, 0.25],
+"ColorHex": "#8B4513",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "buckler_boss",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [-0.22, 0.75, 0.17],
+"Rotation": [0, 0, 0],
+"Scale": [0.08, 0.08, 0.05],
+"ColorHex": "#708090",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "pouch",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [-0.1, 0.6, -0.1],
+"Rotation": [0, 0, 0],
+"Scale": [0.08, 0.1, 0.08],
+"ColorHex": "#3E2723",
+"Material": "Leather",
+"Operation": "Union"
+}
+],
+"Timeline": [
+{
+"Time": 0.0,
+"Action": "Rotate",
+"TargetId": "spear_shaft",
+"Value": [0, 0, 5],
+"Duration": 0.0
+},
+{
+"Time": 1.5,
+"Action": "Rotate",
+"TargetId": "spear_shaft",
+"Value": [2, 0, 7],
+"Duration": 1.5
+},
+{
+"Time": 3.0,
+"Action": "Rotate",
+"TargetId": "spear_shaft",
+"Value": [0, 0, 5],
+"Duration": 1.5
+},
+{
+"Time": 0.0,
+"Action": "Move",
+"TargetId": "tunic_upper",
+"Value": [0, 0.75, 0],
+"Duration": 0.0
+},
+{
+"Time": 1.5,
+"Action": "Scale",
+"TargetId": "tunic_upper",
+"Value": [0.31, 0.36, 0.21],
+"Duration": 1.5
+},
+{
+"Time": 3.0,
+"Action": "Scale",
+"TargetId": "tunic_upper",
+"Value": [0.3, 0.35, 0.2],
+"Duration": 1.5
+}
+]
+}

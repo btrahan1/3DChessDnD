@@ -1,0 +1,175 @@
+{
+"Name": "Radiant_Archmage_Queen",
+"Type": "Procedural",
+"Parts": [
+{
+"Id": "base_pedestal",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0, 0.05, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.9, 0.1, 0.9],
+"ColorHex": "#333333",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "base_marble",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0, 0.12, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.8, 0.05, 0.8],
+"ColorHex": "#FFFFFF",
+"Material": "Glass",
+"Operation": "Union"
+},
+{
+"Id": "dress_lower",
+"ParentId": null,
+"Shape": "Cone",
+"Position": [0, 0.6, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.45, 1.1, 0.45],
+"ColorHex": "#4B0082",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "torso_upper",
+"ParentId": null,
+"Shape": "Capsule",
+"Position": [0, 1.25, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.25, 0.4, 0.18],
+"ColorHex": "#E5E4E2",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "shoulder_cloak_l",
+"ParentId": null,
+"Shape": "Box",
+"Position": [0.2, 1.3, -0.1],
+"Rotation": [15, 20, 0],
+"Scale": [0.1, 0.6, 0.05],
+"ColorHex": "#4B0082",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "shoulder_cloak_r",
+"ParentId": null,
+"Shape": "Box",
+"Position": [-0.2, 1.3, -0.1],
+"Rotation": [15, -20, 0],
+"Scale": [0.1, 0.6, 0.05],
+"ColorHex": "#4B0082",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "head",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [0, 1.55, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.16, 0.18, 0.16],
+"ColorHex": "#FFDBAC",
+"Material": "Plastic",
+"Operation": "Union"
+},
+{
+"Id": "crown_circlet",
+"ParentId": null,
+"Shape": "Torus",
+"Position": [0, 1.62, 0],
+"Rotation": [90, 0, 0],
+"Scale": [0.14, 0.14, 0.02],
+"ColorHex": "#FFD700",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "staff_handle",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [-0.4, 0.85, 0.1],
+"Rotation": [0, 0, 0],
+"Scale": [0.03, 1.7, 0.03],
+"ColorHex": "#FFD700",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "staff_crystal",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [-0.4, 1.8, 0.1],
+"Rotation": [0, 0, 0],
+"Scale": [0.12, 0.15, 0.12],
+"ColorHex": "#E0B0FF",
+"Material": "Glow",
+"Operation": "Union"
+},
+{
+"Id": "magic_orbit_1",
+"ParentId": null,
+"Shape": "Torus",
+"Position": [-0.4, 1.8, 0.1],
+"Rotation": [45, 45, 0],
+"Scale": [0.2, 0.2, 0.01],
+"ColorHex": "#FFFFFF",
+"Material": "Glow",
+"Operation": "Union"
+},
+{
+"Id": "floating_orb_l",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [0.35, 1.4, 0.2],
+"Rotation": [0, 0, 0],
+"Scale": [0.06, 0.06, 0.06],
+"ColorHex": "#00BFFF",
+"Material": "Glow",
+"Operation": "Union"
+}
+],
+"Timeline": [
+{
+"Time": 0.0,
+"Action": "Rotate",
+"TargetId": "magic_orbit_1",
+"Value": [45, 0, 0],
+"Duration": 0.0
+},
+{
+"Time": 2.0,
+"Action": "Rotate",
+"TargetId": "magic_orbit_1",
+"Value": [45, 360, 0],
+"Duration": 2.0
+},
+{
+"Time": 0.0,
+"Action": "Move",
+"TargetId": "staff_crystal",
+"Value": [-0.4, 1.8, 0.1],
+"Duration": 0.0
+},
+{
+"Time": 1.0,
+"Action": "Move",
+"TargetId": "staff_crystal",
+"Value": [-0.4, 1.85, 0.1],
+"Duration": 1.0
+},
+{
+"Time": 2.0,
+"Action": "Move",
+"TargetId": "staff_crystal",
+"Value": [-0.4, 1.8, 0.1],
+"Duration": 1.0
+}
+]
+}

@@ -1,0 +1,127 @@
+@page "/"
+@implements IDisposable
+@using ChessDnD.Engine
+@inject IJSRuntime JSRuntime
+
+<PageTitle>3D Chess DnD</PageTitle>
+
+<div class="game-container">
+    <canvas id="renderCanvas"></canvas>
+    
+    <div class="ui-overlay top-left">
+        <h2 class="premium-text">3D Chess: DnD Edition</h2>
+        <div class="turn-indicator">Current Turn: <span class="player-color">@GameService.CurrentTurn</span></div>
+        <div class="combat-log">@GameService.LastCombatMessage</div>
+    </div>
+
+    <div class="ui-overlay bottom-center">
+        <div class="action-bar">
+            <button class="action-btn">Attack</button>
+            <button class="action-btn">Spell</button>
+            <button class="action-btn">Defend</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .game-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: #1a1a1a;
+    }
+
+    #renderCanvas {
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+    }
+
+    .ui-overlay {
+        position: absolute;
+        pointer-events: none;
+        z-index: 10;
+        padding: 20px;
+    }
+
+    .top-left {
+        top: 0;
+        left: 0;
+    }
+
+    .bottom-center {
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        pointer-events: auto;
+    }
+
+    .premium-text {
+        color: #ffd700;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        font-family: 'Inter', sans-serif;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .turn-indicator {
+        color: #fff;
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+
+    .action-bar {
+        display: flex;
+        gap: 15px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px 30px;
+        border-radius: 50px;
+        border: 1px solid #ffd700;
+        backdrop-filter: blur(5px);
+    }
+
+    .action-btn {
+        background: transparent;
+        border: 2px solid #555;
+        color: #ddd;
+        padding: 8px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .action-btn:hover {
+        border-color: #ffd700;
+        color: #fff;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        transform: translateY(-2px);
+    }
+
+    .player-white { color: #fff; }
+    .player-black { color: #888; }
+</style>
+
+@code {
+    [Inject] private ChessDnD.Engine.GameService GameService { get; set; } = default!;
+
+    private DotNetObjectReference<ChessDnD.Engine.GameService>? _objRef;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            GameService.OnStateChanged += StateHasChanged;
+            _objRef = DotNetObjectReference.Create(GameService);
+            await JSRuntime.InvokeVoidAsync("initBabylon", _objRef);
+        }
+    }
+
+    public void Dispose()
+    {
+        GameService.OnStateChanged -= StateHasChanged;
+        _objRef?.Dispose();
+    }
+}

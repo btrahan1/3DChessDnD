@@ -1,0 +1,226 @@
+{
+"Name": "Radiant_Storm_Rook",
+"Type": "Procedural",
+"Parts": [
+{
+"Id": "base_pedestal",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0, 0.05, 0],
+"Rotation": [0, 0, 0],
+"Scale": [1.0, 0.1, 1.0],
+"ColorHex": "#333333",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "base_marble",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0, 0.12, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.9, 0.05, 0.9],
+"ColorHex": "#FFFFFF",
+"Material": "Glass",
+"Operation": "Union"
+},
+{
+"Id": "main_body",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0, 0.65, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.65, 1.0, 0.65],
+"ColorHex": "#E5E4E2",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "bird_chest",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [0, 0.9, 0.15],
+"Rotation": [0, 0, 0],
+"Scale": [0.7, 0.8, 0.6],
+"ColorHex": "#F8F8FF",
+"Material": "Leather",
+"Operation": "Union"
+},
+{
+"Id": "head_unit",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [0, 1.4, 0.25],
+"Rotation": [0, 0, 0],
+"Scale": [0.3, 0.32, 0.3],
+"ColorHex": "#E5E4E2",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "beak_upper",
+"ParentId": null,
+"Shape": "Cone",
+"Position": [0, 1.4, 0.5],
+"Rotation": [90, 0, 0],
+"Scale": [0.12, 0.25, 0.12],
+"ColorHex": "#FFD700",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "eye_l",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [0.12, 1.48, 0.4],
+"Rotation": [0, 0, 0],
+"Scale": [0.05, 0.05, 0.05],
+"ColorHex": "#00FFFF",
+"Material": "Glow",
+"Operation": "Union"
+},
+{
+"Id": "eye_r",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [-0.12, 1.48, 0.4],
+"Rotation": [0, 0, 0],
+"Scale": [0.05, 0.05, 0.05],
+"ColorHex": "#00FFFF",
+"Material": "Glow",
+"Operation": "Union"
+},
+{
+"Id": "wing_l",
+"ParentId": null,
+"Shape": "Box",
+"Position": [0.45, 0.8, -0.1],
+"Rotation": [15, -10, 10],
+"Scale": [0.15, 1.2, 0.5],
+"ColorHex": "#C0C0C0",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "wing_r",
+"ParentId": null,
+"Shape": "Box",
+"Position": [-0.45, 0.8, -0.1],
+"Rotation": [15, 10, -10],
+"Scale": [0.15, 1.2, 0.5],
+"ColorHex": "#C0C0C0",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "rook_crown_base",
+"ParentId": null,
+"Shape": "Cylinder",
+"Position": [0, 1.65, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.6, 0.15, 0.6],
+"ColorHex": "#708090",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "merlon_f",
+"ParentId": null,
+"Shape": "Box",
+"Position": [0, 1.75, 0.25],
+"Rotation": [0, 0, 0],
+"Scale": [0.15, 0.15, 0.15],
+"ColorHex": "#708090",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "merlon_b",
+"ParentId": null,
+"Shape": "Box",
+"Position": [0, 1.75, -0.25],
+"Rotation": [0, 0, 0],
+"Scale": [0.15, 0.15, 0.15],
+"ColorHex": "#708090",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "merlon_l",
+"ParentId": null,
+"Shape": "Box",
+"Position": [0.25, 1.75, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.15, 0.15, 0.15],
+"ColorHex": "#708090",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "merlon_r",
+"ParentId": null,
+"Shape": "Box",
+"Position": [-0.25, 1.75, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.15, 0.15, 0.15],
+"ColorHex": "#708090",
+"Material": "Metal",
+"Operation": "Union"
+},
+{
+"Id": "storm_orb",
+"ParentId": null,
+"Shape": "Sphere",
+"Position": [0, 1.1, 0],
+"Rotation": [0, 0, 0],
+"Scale": [0.2, 0.2, 0.2],
+"ColorHex": "#00BFFF",
+"Material": "Glow",
+"Operation": "Union"
+}
+],
+"Timeline": [
+{
+"Time": 0.0,
+"Action": "Rotate",
+"TargetId": "wing_l",
+"Value": [15, -10, 10],
+"Duration": 0.0
+},
+{
+"Time": 2.0,
+"Action": "Rotate",
+"TargetId": "wing_l",
+"Value": [15, -10, 15],
+"Duration": 2.0
+},
+{
+"Time": 4.0,
+"Action": "Rotate",
+"TargetId": "wing_l",
+"Value": [15, -10, 10],
+"Duration": 2.0
+},
+{
+"Time": 0.0,
+"Action": "Color",
+"TargetId": "storm_orb",
+"Value": [0, 191, 255],
+"Duration": 0.0
+},
+{
+"Time": 2.0,
+"Action": "Color",
+"TargetId": "storm_orb",
+"Value": [255, 255, 255],
+"Duration": 2.0
+},
+{
+"Time": 4.0,
+"Action": "Color",
+"TargetId": "storm_orb",
+"Value": [0, 191, 255],
+"Duration": 2.0
+}
+]
+}

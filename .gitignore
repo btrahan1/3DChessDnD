@@ -1,0 +1,38 @@
+# .gitignore for Blazor WebAssembly / .NET
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docuser
+
+# User-specific files (DotSettings)
+*.dotnet/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bbin/
+obj/
+bin/
+node_modules/
+
+# Visual Studio cache/options directory
+.vs/
+# Best practice is to ignore the [Dd]ebug and [Rr]elease folders related to Visual Studio
+# but some keep the .sln and .csproj files.
+
+# Others
+*.log
+build_error.txt
+build_final_check.txt
+final_build.log
+msbuild.binlog
