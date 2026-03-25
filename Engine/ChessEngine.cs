@@ -20,19 +20,17 @@ namespace ChessDnD.Engine
         public Color Color { get; set; }
         public int HP { get; set; }
         public int MaxHP { get; set; }
-        public int Attack { get; set; }
-        public int Defense { get; set; }
+        public int Damage { get; set; }
         public int Row { get; set; }
         public int Col { get; set; }
 
-        protected Piece(PieceType type, Color color, int hp, int attack, int defense)
+        protected Piece(PieceType type, Color color, int hp, int damage)
         {
             Type = type;
             Color = color;
             HP = hp;
             MaxHP = hp;
-            Attack = attack;
-            Defense = defense;
+            Damage = damage;
         }
 
         public abstract bool IsValidMove(int targetRow, int targetCol, Board board);
@@ -40,22 +38,19 @@ namespace ChessDnD.Engine
 
     public class Pawn : Piece
     {
-        public Pawn(Color color) : base(PieceType.Pawn, color, 10, 2, 1) { }
+        public Pawn(Color color) : base(PieceType.Pawn, color, 2, 1) { }
         public override bool IsValidMove(int targetRow, int targetCol, Board board)
         {
             int direction = Color == Color.White ? 1 : -1;
             int startRow = Color == Color.White ? 1 : 6;
 
-            // Standard one-square move
             if (targetCol == Col && targetRow == Row + direction && board.GetPiece(targetRow, targetCol) == null)
                 return true;
 
-            // Two-square initial move
             if (targetCol == Col && Row == startRow && targetRow == Row + (2 * direction) &&
                 board.GetPiece(Row + direction, Col) == null && board.GetPiece(targetRow, targetCol) == null)
                 return true;
 
-            // Capture
             if (Math.Abs(targetCol - Col) == 1 && targetRow == Row + direction && board.GetPiece(targetRow, targetCol) != null)
                 return true;
 
@@ -65,7 +60,7 @@ namespace ChessDnD.Engine
 
     public class Knight : Piece
     {
-        public Knight(Color color) : base(PieceType.Knight, color, 15, 4, 2) { }
+        public Knight(Color color) : base(PieceType.Knight, color, 4, 3) { }
         public override bool IsValidMove(int targetRow, int targetCol, Board board)
         {
             int dRow = Math.Abs(targetRow - Row);
@@ -76,7 +71,7 @@ namespace ChessDnD.Engine
 
     public class Bishop : Piece
     {
-        public Bishop(Color color) : base(PieceType.Bishop, color, 12, 3, 1) { }
+        public Bishop(Color color) : base(PieceType.Bishop, color, 3, 0) { }
         public override bool IsValidMove(int targetRow, int targetCol, Board board)
         {
             if (Math.Abs(targetRow - Row) != Math.Abs(targetCol - Col)) return false;
@@ -86,7 +81,7 @@ namespace ChessDnD.Engine
 
     public class Rook : Piece
     {
-        public Rook(Color color) : base(PieceType.Rook, color, 20, 4, 4) { }
+        public Rook(Color color) : base(PieceType.Rook, color, 5, 3) { }
         public override bool IsValidMove(int targetRow, int targetCol, Board board)
         {
             if (targetRow != Row && targetCol != Col) return false;
@@ -96,7 +91,7 @@ namespace ChessDnD.Engine
 
     public class Queen : Piece
     {
-        public Queen(Color color) : base(PieceType.Queen, color, 25, 6, 3) { }
+        public Queen(Color color) : base(PieceType.Queen, color, 7, 3) { }
         public override bool IsValidMove(int targetRow, int targetCol, Board board)
         {
             if (Math.Abs(targetRow - Row) != Math.Abs(targetCol - Col) && targetRow != Row && targetCol != Col) return false;
@@ -106,7 +101,7 @@ namespace ChessDnD.Engine
 
     public class King : Piece
     {
-        public King(Color color) : base(PieceType.King, color, 30, 5, 5) { }
+        public King(Color color) : base(PieceType.King, color, 10, 5) { }
         public override bool IsValidMove(int targetRow, int targetCol, Board board)
         {
             return Math.Abs(targetRow - Row) <= 1 && Math.Abs(targetCol - Col) <= 1;
@@ -156,22 +151,35 @@ namespace ChessDnD.Engine
         
         public CombatResult ResolveCombat(Piece attacker, Piece defender)
         {
-            var random = new Random();
-            int roll = random.Next(1, 21);
-            int attackScore = roll + attacker.Attack;
-            var result = new CombatResult { AttackerRoll = roll };
-            if (attackScore >= defender.Defense + 10) {
-                int damage = attacker.Attack + random.Next(1, 7);
-                defender.HP -= damage;
-                result.IsVictory = defender.HP <= 0;
-                result.DamageDealt = damage;
-                result.DefenderRemainingHP = Math.Max(0, defender.HP);
-                result.Message = $"Hit! Dealt {damage} damage.";
+            // Simple deterministic combat with attacker advantage
+            int attackerDamage = attacker.Damage + 1;
+            int defenderDamage = defender.Damage;
+
+            var result = new CombatResult();
+            
+            // Attacker hits
+            defender.HP -= attackerDamage;
+            result.DamageDealt = attackerDamage;
+            result.DefenderRemainingHP = Math.Max(0, defender.HP);
+            result.Message = $"{attacker.Type} deals {attackerDamage} damage.";
+
+            // Defender ALWAYS retaliates if they were alive (Dying Breath)
+            attacker.HP -= defenderDamage;
+            result.Message += $" {defender.Type} retaliates for {defenderDamage}!";
+
+            if (defender.HP <= 0) {
+                result.IsVictory = true;
+                squares[defender.Row, defender.Col] = null;
+                result.Message += $" {defender.Type} was defeated!";
             } else {
                 result.IsVictory = false;
-                result.Message = "Missed!";
             }
-            if (result.IsVictory) squares[defender.Row, defender.Col] = null;
+
+            if (attacker.HP <= 0) {
+                squares[attacker.Row, attacker.Col] = null;
+                result.Message += $" {attacker.Type} was defeated!";
+            }
+            
             return result;
         }
 
@@ -180,15 +188,32 @@ namespace ChessDnD.Engine
             var piece = squares[fromRow, fromCol];
             if (piece != null) {
                 var target = squares[toRow, toCol];
+                bool canMove = true;
                 if (target != null && target.Color != piece.Color) {
                     var combat = ResolveCombat(piece, target);
-                    if (!combat.IsVictory) return;
+                    // Only move if the defender was defeated
+                    canMove = combat.IsVictory;
                 }
-                squares[toRow, toCol] = piece;
-                squares[fromRow, fromCol] = null;
-                piece.Row = toRow;
-                piece.Col = toCol;
+                
+                if (canMove && squares[fromRow, fromCol] != null) {
+                    squares[toRow, toCol] = piece;
+                    squares[fromRow, fromCol] = null;
+                    piece.Row = toRow;
+                    piece.Col = toCol;
+                }
             }
+        }
+        public System.Collections.Generic.List<object> GetFullState()
+        {
+            var pieces = new System.Collections.Generic.List<object>();
+            for (int r = 0; r < 8; r++) {
+                for (int c = 0; c < 8; c++) {
+                    if (squares[r, c] != null) {
+                        pieces.Add(new { Row = r, Col = c, HP = squares[r, c].HP, MaxHP = squares[r, c].MaxHP });
+                    }
+                }
+            }
+            return pieces;
         }
     }
 }

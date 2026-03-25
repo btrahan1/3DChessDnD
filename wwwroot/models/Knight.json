@@ -1,193 +1,216 @@
 {
-"Name": "Radiant_Vanguard_Knight",
-"Type": "Procedural",
-"Parts": [
-{
-"Id": "base_pedestal",
-"ParentId": null,
-"Shape": "Cylinder",
-"Position": [0, 0.05, 0],
-"Rotation": [0, 0, 0],
-"Scale": [0.85, 0.1, 0.85],
-"ColorHex": "#333333",
-"Material": "Metal",
-"Operation": "Union"
-},
-{
-"Id": "base_marble",
-"ParentId": null,
-"Shape": "Cylinder",
-"Position": [0, 0.12, 0],
-"Rotation": [0, 0, 0],
-"Scale": [0.75, 0.05, 0.75],
-"ColorHex": "#FFFFFF",
-"Material": "Glass",
-"Operation": "Union"
-},
-{
-"Id": "greaves",
-"ParentId": null,
-"Shape": "Capsule",
-"Position": [0, 0.45, 0],
-"Rotation": [0, 0, 0],
-"Scale": [0.4, 0.7, 0.35],
-"ColorHex": "#E5E4E2",
-"Material": "Metal",
-"Operation": "Union"
-},
-{
-"Id": "cuirass",
-"ParentId": null,
-"Shape": "Box",
-"Position": [0, 0.95, 0],
-"Rotation": [0, 0, 0],
-"Scale": [0.5, 0.5, 0.35],
-"ColorHex": "#E5E4E2",
-"Material": "Metal",
-"Operation": "Union"
-},
-{
-"Id": "pauldron_l",
-"ParentId": null,
-"Shape": "Sphere",
-"Position": [0.3, 1.15, 0],
-"Rotation": [0, 0, 30],
-"Scale": [0.25, 0.25, 0.25],
-"ColorHex": "#FFD700",
-"Material": "Metal",
-"Operation": "Union"
-},
-{
-"Id": "pauldron_r",
-"ParentId": null,
-"Shape": "Sphere",
-"Position": [-0.3, 1.15, 0],
-"Rotation": [0, 0, -30],
-"Scale": [0.25, 0.25, 0.25],
-"ColorHex": "#FFD700",
-"Material": "Metal",
-"Operation": "Union"
-},
-{
-"Id": "great_helm",
-"ParentId": null,
-"Shape": "Box",
-"Position": [0, 1.35, 0.05],
-"Rotation": [0, 0, 0],
-"Scale": [0.22, 0.28, 0.22],
-"ColorHex": "#E5E4E2",
-"Material": "Metal",
-"Operation": "Union"
-},
-{
-"Id": "helm_crest",
-"ParentId": null,
-"Shape": "Cone",
-"Position": [0, 1.55, -0.05],
-"Rotation": [20, 0, 0],
-"Scale": [0.05, 0.3, 0.1],
-"ColorHex": "#0000FF",
-"Material": "Leather",
-"Operation": "Union"
-},
-{
-"Id": "shield_main",
-"ParentId": null,
-"Shape": "Box",
-"Position": [0.4, 0.8, 0.2],
-"Rotation": [0, 25, 0],
-"Scale": [0.45, 0.7, 0.06],
-"ColorHex": "#FFD700",
-"Material": "Metal",
-"Operation": "Union"
-},
-{
-"Id": "shield_emblem",
-"ParentId": null,
-"Shape": "Cone",
-"Position": [0.42, 0.85, 0.25],
-"Rotation": [90, 25, 0],
-"Scale": [0.15, 0.1, 0.15],
-"ColorHex": "#0000FF",
-"Material": "Metal",
-"Operation": "Union"
-},
-{
-"Id": "sword_handle",
-"ParentId": null,
-"Shape": "Cylinder",
-"Position": [-0.4, 0.9, 0.1],
-"Rotation": [-45, 0, 0],
-"Scale": [0.04, 0.25, 0.04],
-"ColorHex": "#4A2C2A",
-"Material": "Leather",
-"Operation": "Union"
-},
-{
-"Id": "sword_guard",
-"ParentId": null,
-"Shape": "Box",
-"Position": [-0.4, 1.05, 0.25],
-"Rotation": [-45, 0, 0],
-"Scale": [0.25, 0.04, 0.06],
-"ColorHex": "#FFD700",
-"Material": "Metal",
-"Operation": "Union"
-},
-{
-"Id": "sword_blade",
-"ParentId": null,
-"Shape": "Box",
-"Position": [-0.4, 1.4, 0.6],
-"Rotation": [-45, 0, 0],
-"Scale": [0.08, 0.9, 0.02],
-"ColorHex": "#C0C0C0",
-"Material": "Metal",
-"Operation": "Union"
-}
-],
-"Timeline": [
-{
-"Time": 0.0,
-"Action": "Rotate",
-"TargetId": "sword_handle",
-"Value": [-45, 0, 0],
-"Duration": 0.0
-},
-{
-"Time": 1.5,
-"Action": "Rotate",
-"TargetId": "sword_handle",
-"Value": [-55, 0, 0],
-"Duration": 1.5
-},
-{
-"Time": 3.0,
-"Action": "Rotate",
-"TargetId": "sword_handle",
-"Value": [-45, 0, 0],
-"Duration": 1.5
-},
-{
-"Time": 0.0,
-"Action": "Move",
-"TargetId": "shield_main",
-"Value": [0.4, 0.8, 0.2],
-"Duration": 0.0
-},
-{
-"Time": 1.5,
-"Action": "Move",
-"TargetId": "shield_main",
-"Value": [0.42, 0.82, 0.2],
-"Duration": 1.5
-},
-{
-"Time": 3.0,
-"Action": "Move",
-"TargetId": "shield_main",
-"Value": [0.4, 0.8, 0.2],
-"Duration": 1.5
-}
-]
+  "Name": "Radiant_Centaur_Knight",
+  "Type": "Procedural",
+  "Parts": [
+    {
+      "Id": "base_pedestal",
+      "ParentId": null,
+      "Shape": "Cylinder",
+      "Position": [0, 0.05, 0],
+      "Rotation": [0, 0, 0],
+      "Scale": [0.85, 0.1, 0.85],
+      "ColorHex": "#333333",
+      "Material": "Metal",
+      "Operation": "Union"
+    },
+    {
+      "Id": "base_marble",
+      "ParentId": null,
+      "Shape": "Cylinder",
+      "Position": [0, 0.12, 0],
+      "Rotation": [0, 0, 0],
+      "Scale": [0.75, 0.05, 0.75],
+      "ColorHex": "#FFFFFF",
+      "Material": "Glass",
+      "Operation": "Union"
+    },
+    {
+      "Id": "horse_body",
+      "ParentId": null,
+      "Shape": "Box",
+      "Position": [0, 0.45, -0.1],
+      "Rotation": [0, 0, 0],
+      "Scale": [0.35, 0.35, 0.7],
+      "ColorHex": "#8B4513",
+      "Material": "Leather",
+      "Operation": "Union"
+    },
+    {
+      "Id": "leg_fr",
+      "ParentId": "horse_body",
+      "Shape": "Cylinder",
+      "Position": [0.12, -0.25, 0.25],
+      "Rotation": [0, 0, 0],
+      "Scale": [0.08, 0.5, 0.08],
+      "ColorHex": "#8B4513",
+      "Material": "Leather",
+      "Operation": "Union"
+    },
+    {
+      "Id": "leg_fl",
+      "ParentId": "horse_body",
+      "Shape": "Cylinder",
+      "Position": [-0.12, -0.25, 0.25],
+      "Rotation": [0, 0, 0],
+      "Scale": [0.08, 0.5, 0.08],
+      "ColorHex": "#8B4513",
+      "Material": "Leather",
+      "Operation": "Union"
+    },
+    {
+      "Id": "leg_br",
+      "ParentId": "horse_body",
+      "Shape": "Cylinder",
+      "Position": [0.12, -0.25, -0.25],
+      "Rotation": [0, 0, 0],
+      "Scale": [0.08, 0.5, 0.08],
+      "ColorHex": "#8B4513",
+      "Material": "Leather",
+      "Operation": "Union"
+    },
+    {
+      "Id": "leg_bl",
+      "ParentId": "horse_body",
+      "Shape": "Cylinder",
+      "Position": [-0.12, -0.25, -0.25],
+      "Rotation": [0, 0, 0],
+      "Scale": [0.08, 0.5, 0.08],
+      "ColorHex": "#8B4513",
+      "Material": "Leather",
+      "Operation": "Union"
+    },
+    {
+      "Id": "cuirass",
+      "ParentId": "horse_body",
+      "Shape": "Box",
+      "Position": [0, 0.45, 0.2],
+      "Rotation": [0, 0, 0],
+      "Scale": [0.5, 0.5, 0.35],
+      "ColorHex": "#E5E4E2",
+      "Material": "Metal",
+      "Operation": "Union"
+    },
+    {
+      "Id": "pauldron_l",
+      "ParentId": "cuirass",
+      "Shape": "Sphere",
+      "Position": [0.3, 0.2, 0],
+      "Rotation": [0, 0, 30],
+      "Scale": [0.25, 0.25, 0.25],
+      "ColorHex": "#FFD700",
+      "Material": "Metal",
+      "Operation": "Union"
+    },
+    {
+      "Id": "pauldron_r",
+      "ParentId": "cuirass",
+      "Shape": "Sphere",
+      "Position": [-0.3, 0.2, 0],
+      "Rotation": [0, 0, -30],
+      "Scale": [0.25, 0.25, 0.25],
+      "ColorHex": "#FFD700",
+      "Material": "Metal",
+      "Operation": "Union"
+    },
+    {
+      "Id": "great_helm",
+      "ParentId": "cuirass",
+      "Shape": "Box",
+      "Position": [0, 0.4, 0.05],
+      "Rotation": [0, 0, 0],
+      "Scale": [0.22, 0.28, 0.22],
+      "ColorHex": "#E5E4E2",
+      "Material": "Metal",
+      "Operation": "Union"
+    },
+    {
+      "Id": "helm_crest",
+      "ParentId": "great_helm",
+      "Shape": "Cone",
+      "Position": [0, 0.2, -0.1],
+      "Rotation": [20, 0, 0],
+      "Scale": [0.05, 0.3, 0.1],
+      "ColorHex": "#0000FF",
+      "Material": "Leather",
+      "Operation": "Union"
+    },
+    {
+      "Id": "shield_main",
+      "ParentId": "cuirass",
+      "Shape": "Box",
+      "Position": [0.4, -0.15, 0.2],
+      "Rotation": [0, 25, 0],
+      "Scale": [0.45, 0.7, 0.06],
+      "ColorHex": "#FFD700",
+      "Material": "Metal",
+      "Operation": "Union"
+    },
+    {
+      "Id": "shield_emblem",
+      "ParentId": "shield_main",
+      "Shape": "Cone",
+      "Position": [0.02, 0.05, 0.05],
+      "Rotation": [90, 0, 0],
+      "Scale": [0.15, 0.1, 0.15],
+      "ColorHex": "#0000FF",
+      "Material": "Metal",
+      "Operation": "Union"
+    },
+    {
+      "Id": "sword_handle",
+      "ParentId": "cuirass",
+      "Shape": "Cylinder",
+      "Position": [-0.4, -0.05, 0.1],
+      "Rotation": [-45, 0, 0],
+      "Scale": [0.04, 0.25, 0.04],
+      "ColorHex": "#4A2C2A",
+      "Material": "Leather",
+      "Operation": "Union"
+    },
+    {
+      "Id": "sword_guard",
+      "ParentId": "sword_handle",
+      "Shape": "Box",
+      "Position": [0, 0.15, 0],
+      "Rotation": [0, 0, 0],
+      "Scale": [0.25, 0.04, 0.06],
+      "ColorHex": "#FFD700",
+      "Material": "Metal",
+      "Operation": "Union"
+    },
+    {
+      "Id": "sword_blade",
+      "ParentId": "sword_guard",
+      "Shape": "Box",
+      "Position": [0, 0.35, 0],
+      "Rotation": [0, 0, 0],
+      "Scale": [0.08, 0.9, 0.02],
+      "ColorHex": "#C0C0C0",
+      "Material": "Metal",
+      "Operation": "Union"
+    }
+  ],
+  "Timeline": [
+    {
+      "Time": 0.0,
+      "Action": "Rotate",
+      "TargetId": "sword_handle",
+      "Value": [-45, 0, 0],
+      "Duration": 0.0
+    },
+    {
+      "Time": 1.5,
+      "Action": "Rotate",
+      "TargetId": "sword_handle",
+      "Value": [-55, 0, 0],
+      "Duration": 1.5
+    },
+    {
+      "Time": 3.0,
+      "Action": "Rotate",
+      "TargetId": "sword_handle",
+      "Value": [-45, 0, 0],
+      "Duration": 1.5
+    }
+  ]
 }

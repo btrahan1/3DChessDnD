@@ -11,14 +11,43 @@
     <div class="ui-overlay top-left">
         <h2 class="premium-text">3D Chess: DnD Edition</h2>
         <div class="turn-indicator">Current Turn: <span class="player-color">@GameService.CurrentTurn</span></div>
-        <div class="combat-log">@GameService.LastCombatMessage</div>
+        
+        @if (GameService.SelectedPiece != null)
+        {
+            <div class="selection-info">
+                <div class="piece-title">@GameService.SelectedPiece.Type</div>
+                <div class="stat-bar">
+                    <span class="stat-label">HP:</span>
+                    <span class="stat-value">@GameService.SelectedPiece.HP / @GameService.SelectedPiece.MaxHP</span>
+                </div>
+                <div class="stat-bar">
+                    <span class="stat-label">ATK:</span>
+                    <span class="stat-value">@GameService.SelectedPiece.Damage</span>
+                </div>
+            </div>
+        }
+
+        <div class="combat-log">
+            <div class="log-title">Battle Journal</div>
+            <div class="log-content">@GameService.LastCombatMessage</div>
+        </div>
     </div>
 
     <div class="ui-overlay bottom-center">
         <div class="action-bar">
-            <button class="action-btn">Attack</button>
-            <button class="action-btn">Spell</button>
-            <button class="action-btn">Defend</button>
+            <button class="action-btn @(GameService.ActiveSpell == null ? "active" : "")" @onclick="() => GameService.ToggleSpell(null)">Move/Attack</button>
+            
+            @if (GameService.SelectedPiece?.Type == PieceType.Bishop)
+            {
+                <button class="action-btn spell-btn @(GameService.ActiveSpell == "Heal" ? "active" : "")"
+                        @onclick='() => GameService.ToggleSpell("Heal")'>
+                    ✛ Heal
+                </button>
+                @if (GameService.ActiveSpell == "Heal")
+                {
+                    <div class="spell-hint">Select an ally to heal</div>
+                }
+            }
         </div>
     </div>
 </div>
@@ -72,18 +101,21 @@
 
     .action-bar {
         display: flex;
-        gap: 15px;
-        background: rgba(0, 0, 0, 0.7);
+        gap: 12px;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.75);
         padding: 15px 30px;
         border-radius: 50px;
         border: 1px solid #ffd700;
         backdrop-filter: blur(5px);
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .action-btn {
-        background: transparent;
+        background: rgba(40, 40, 40, 0.8);
         border: 2px solid #555;
-        color: #ddd;
+        color: #ccc;
         padding: 8px 20px;
         border-radius: 20px;
         cursor: pointer;
@@ -91,13 +123,81 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
+        font-size: 0.85rem;
     }
 
-    .action-btn:hover {
+    .action-btn:hover, .action-btn.active {
         border-color: #ffd700;
+        background: rgba(255, 215, 0, 0.15);
         color: #fff;
         box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
         transform: translateY(-2px);
+    }
+
+    .spell-btn {
+        border-color: #44ff88;
+        color: #44ff88;
+    }
+
+    .spell-btn:hover, .spell-btn.active {
+        border-color: #44ff88;
+        background: rgba(68, 255, 136, 0.15);
+        color: #fff;
+        box-shadow: 0 0 15px rgba(68, 255, 136, 0.4);
+    }
+
+    .spell-hint {
+        color: #44ff88;
+        font-size: 0.8rem;
+        font-style: italic;
+        text-shadow: 0 0 6px rgba(68, 255, 136, 0.6);
+        white-space: nowrap;
+    }
+
+    .selection-info {
+        background: rgba(0, 0, 0, 0.6);
+        border-left: 4px solid #ffd700;
+        padding: 10px 15px;
+        margin-top: 15px;
+        border-radius: 0 8px 8px 0;
+    }
+
+    .piece-title {
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+
+    .stat-bar {
+        font-family: 'Courier New', monospace;
+        color: #aaa;
+        font-size: 0.9rem;
+    }
+
+    .stat-value { color: #fff; }
+
+    .combat-log {
+        margin-top: 20px;
+        background: rgba(20, 20, 20, 0.8);
+        border: 1px solid #444;
+        padding: 10px;
+        border-radius: 4px;
+        max-width: 300px;
+    }
+
+    .log-title {
+        font-size: 0.8rem;
+        color: #ffd700;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #333;
+    }
+
+    .log-content {
+        color: #eee;
+        font-size: 0.9rem;
+        font-style: italic;
     }
 
     .player-white { color: #fff; }
