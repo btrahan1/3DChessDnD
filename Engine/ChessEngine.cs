@@ -44,10 +44,21 @@ namespace ChessDnD.Engine
         public override bool IsValidMove(int targetRow, int targetCol, Board board)
         {
             int direction = Color == Color.White ? 1 : -1;
+            int startRow = Color == Color.White ? 1 : 6;
+
+            // Standard one-square move
             if (targetCol == Col && targetRow == Row + direction && board.GetPiece(targetRow, targetCol) == null)
                 return true;
+
+            // Two-square initial move
+            if (targetCol == Col && Row == startRow && targetRow == Row + (2 * direction) &&
+                board.GetPiece(Row + direction, Col) == null && board.GetPiece(targetRow, targetCol) == null)
+                return true;
+
+            // Capture
             if (Math.Abs(targetCol - Col) == 1 && targetRow == Row + direction && board.GetPiece(targetRow, targetCol) != null)
                 return true;
+
             return false;
         }
     }

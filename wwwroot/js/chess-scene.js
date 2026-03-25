@@ -120,7 +120,7 @@ window.addPieceMesh = async (row, col, color, type) => {
     if (!scene) return;
     
     // Load procedural model from JSON
-    const pieceRoot = await window.ModelLoader.loadProceduralModel(scene, type, color, [row, 0, col]);
+    const pieceRoot = await window.ModelLoader.loadProceduralModel(scene, type, color, [row, 0.01, col]);
     pieceRoot.name = "piece_" + row + "_" + col;
     
     // Orientation: Face the opponent
@@ -148,7 +148,7 @@ window.updatePiecePosition = (fromRow, fromCol, toRow, toCol) => {
         }
 
         BABYLON.Animation.CreateAndStartAnimation("move", piece, "position", 30, 15, 
-            piece.position, new BABYLON.Vector3(toRow, 0.6, toCol), 
+            piece.position, new BABYLON.Vector3(toRow, 0.01, toCol), 
             BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
         
         piece.metadata.row = toRow;
